@@ -1,16 +1,15 @@
 #!/bin/bash
 
 # virtualenv
-sudo apt install python3-venv
+#sudo apt install python3-venv
 python3 -m venv venv
 source venv/bin/activate
 
 # requirements
-pip install --upgrade pip
-pip install -r ../src/web/requirements.txt
-pip install -r ../src/desktop/requirements.txt
+#pip install --upgrade pip
+pip install -r requirements.txt
 
 # django init
 cd ../src/web
 python manage.py migrate
-python manage.py createsuperuser --username "vasya" --email "1@abc.net"
+#python manage.py createsuperuser --username "vasya" --email "1@abc.net"

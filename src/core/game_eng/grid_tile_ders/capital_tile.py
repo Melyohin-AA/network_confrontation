@@ -12,7 +12,7 @@ class CapitalGridTile(GridTile):
 
     @property
     def power_cap(self) -> int:
-        return 255
+        return 256
 
     @property
     def name(self) -> str:

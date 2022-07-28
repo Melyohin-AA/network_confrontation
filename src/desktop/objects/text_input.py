@@ -46,7 +46,7 @@ class TextInput(DrawObject):
         self.game.screen.blit(self.internal_txtinput.get_surface(), self.pos)
 
     def update_internal_txtinput(self):
-        mock_event = pygame.event.Event(pygame.WINDOWEVENT, {})
+        mock_event = pygame.event.Event(pygame.WINDOWEXPOSED, {})
         self.internal_txtinput.update(mock_event)
 
     def handle_down_key(self, event):

@@ -47,9 +47,6 @@ class RegistrationForm(forms.Form):
     password1 = CommonFields.get_password_field(True, attrs={"class": "form-control"})
     password2 = CommonFields.get_password_field(
         True, "Повторите пароль", attrs={"class": "form-control"})
-    email = forms.EmailField(label="E-mail", min_length=1, max_length=64,
-                             required=True,
-                             widget=forms.EmailInput(attrs={"class": "form-control"}))
     team = forms.ChoiceField(widget=forms.Select(attrs={"class": "form-control"}), label="Фракция",
                              required=True, choices=[(0, "Cyber Corp"), (1, "Добрая Воля"), (2, "Зов Свободы")])
 

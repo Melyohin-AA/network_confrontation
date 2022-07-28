@@ -10,7 +10,6 @@ Welcome to Network Confrontation's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   overview.rst
    code.rst
 
 

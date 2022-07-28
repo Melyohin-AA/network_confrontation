@@ -102,7 +102,7 @@ class LoginScene(Scene):
 
     @staticmethod
     def on_reg_button_click():
-        webbrowser.open('http://network-conf.gq/registration/', new=1)
+        webbrowser.open('http://127.0.0.1:8000/registration/', new=1)
 
     def on_closed(self):
         pygame.mixer.music.stop()

@@ -86,7 +86,6 @@ class ProfileFormPage(FormView):
         if self:
             context["pagename"] = "Мой профиль"
         context["login"] = user.username
-        context["email"] = user.email
         context["regdate"] = user.date_joined
         context["victories"] = user_data.victories_count
         context["played_games"] = user_data.played_games_count

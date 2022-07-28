@@ -1,9 +1,20 @@
 import os
+import sys
 import exceptions
 
 from .hash_algos import HashAlgos
 from io_tools.binary_reader import BinaryReader
 from io_tools.binary_writer import BinaryWriter
+
+
+def try_fix_project_root():
+    current_path = os.path.abspath(sys.modules[__name__].__file__)
+    root_path = current_path[:current_path.find("core") + 4]
+    if root_path not in sys.path:
+        sys.path.append(root_path)
+
+
+try_fix_project_root()
 
 
 class CoreClasses:
@@ -29,11 +40,7 @@ class CoreClasses:
 
     @staticmethod
     def __load_module(name):
-        module = __import__(name)
-        name_segs = name.split('.')[1:]
-        for name_seg in name_segs:
-            module = module.__dict__[name_seg]
-        return module
+        return __import__(name, globals(), locals(), name.count('.'))
 
     @staticmethod
     def __list_files(dir_path, file_handler):

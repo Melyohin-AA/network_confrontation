@@ -5,13 +5,8 @@ from main.models import UserData
 from game_eng.game_model import GameModel
 from django.contrib.auth.models import User
 from django.contrib.sites.shortcuts import get_current_site
-from django.core.mail import EmailMessage
 from django.utils import timezone
 from django.utils.encoding import force_bytes
-# vvv для системы верификации vvv
-from django.utils.http import urlsafe_base64_encode
-from main.db_tools.tokens import account_activation_token
-from network_confrontation_web.settings import AUTO_USER_ACTIVATION
 
 
 class DBUserTools:
@@ -25,13 +20,9 @@ class DBUserTools:
         return "$_del"
 
     @staticmethod
-    def try_register(login: str, password: str, email: str, team: int, request) -> (bool, str):
+    def try_register(login: str, password: str, team: int, request) -> (bool, str):
         """**Попытка регистрации пользователя**\n
         Пробует зарегистрировать пользователя.
-        Когда регистрация удаётся, посылает на указанный адрес письмо с ссылкой для верификации.
-        Если в модуле :mod:`network_confrontation_web.settings`
-         флаг 'AUTO_USER_ACTIVATION' имеет значение True,
-        пользователь верифицируется сразу, а письмо не посылается.
 
         :raises ArgumentTypeException: |ArgumentTypeException|
         :raises ArgumentValueException: |ArgumentValueException|
@@ -39,8 +30,6 @@ class DBUserTools:
         :type login: str
         :param password: Пароль (1-64 символа)
         :type password: str
-        :param email: E-mail (корректный)
-        :type email: str
         :param team: Номер фракции (0-2)
         :type team: int
         :param request: Запрос на регистрацию
@@ -49,11 +38,9 @@ class DBUserTools:
         :rtype: (bool, str) или (bool, None)
         """
         # vvv первичная проверка аргументов vvv
-        if not (isinstance(login, str) and isinstance(password, str) and
-                isinstance(email, str)) and isinstance(team, int):
+        if not (isinstance(login, str) and isinstance(password, str) and isinstance(team, int)):
             raise exceptions.ArgumentTypeException()
-        if not ((0 < len(login) <= 64) and (0 < len(email) <= 64) and
-                (0 < len(password) <= 64) and (0 <= team < 3)):
+        if not ((0 < len(login) <= 64) and (0 < len(password) <= 64) and (0 <= team < 3)):
             raise exceptions.ArgumentValueException()
         del_name = DBUserTools.deleted_user_name()
         if login == del_name:
@@ -62,30 +49,14 @@ class DBUserTools:
         # vvv проверка согласованности аргументов с данными БД vvv
         if len(User.objects.filter(username=login)) > 0:
             return False, DBUserErrorMessages.login_is_already_in_use
-        if len(User.objects.filter(email=email)) > 0:
-            return False, DBUserErrorMessages.email_is_already_in_use
         # vvv запись в БД vvv
-        user = User(username=login, email=email, date_joined=timezone.now())
+        user = User(username=login, date_joined=timezone.now())
         user.set_password(password)
         user.save()
         user_data = UserData(user=user, team=team)
-        if AUTO_USER_ACTIVATION:
-            user_data.activated = True
-        else:
-            DBUserTools.__send_email_with_activation_link(user, request)
+        user_data.activated = True
         user_data.save()
         return True, None
-
-    @staticmethod
-    def __send_email_with_activation_link(user, request):
-        subject = "Верификация аккаунта онлайн голосований"
-        current_site = get_current_site(request)
-        token = account_activation_token.make_token(user)
-        uid = urlsafe_base64_encode(force_bytes(user.pk))
-        activation_link = f"{current_site}/activate/{uid}/{token}/"
-        message = "Ссылка для верификации аккаунта:\n" + activation_link
-        email = EmailMessage(subject, message, to=[user.email])
-        email.send()
 
     @staticmethod
     def delete_user(user: User):
@@ -160,25 +131,6 @@ class DBUserTools:
             return False
         user = user[0]
         return user.check_password(password)
-
-    @staticmethod
-    def try_activate_user(user) -> bool:
-        """**Инструмент верификации пользователей**\n
-        :raises ArgumentTypeException: |ArgumentTypeException|
-        :param user: Пользователь, аккаунт которого нужно верифицировать
-        :type user: User
-        :return: ok
-        :rtype: bool
-        """
-        if not isinstance(user, User):
-            raise exceptions.ArgumentTypeException()
-        user_data, _ = DBUserTools.try_get_user_data(user)
-        if user_data is None:
-            return False
-        if not user_data.activated:
-            user_data.activated = True
-            user_data.save()
-        return True
 
     @staticmethod
     def do_game_session_end_user_data_change(user_data: UserData, victory: bool):

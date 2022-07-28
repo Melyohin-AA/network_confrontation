@@ -1,5 +1,5 @@
 # Desktop application
-pygame==1.9.6
+pygame==2.1.2
 image==1.5.31
 
 # Web application
@@ -12,7 +12,7 @@ websockets==8.1
 channels==2.4.0
 
 # Documentation
-sphinx==3.0.3
+sphinx==5.1.1
 sphinx-rtd-theme==0.4.3
 
 # Code style
@@ -26,4 +26,4 @@ six==1.14.0
 daphne==2.5.0
 
 # Database
-mysqlclient==1.4.6
+mysqlclient==2.1.1

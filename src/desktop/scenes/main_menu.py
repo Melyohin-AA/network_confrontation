@@ -12,15 +12,15 @@ class MainMenuScene(Scene):
         waiting_room_button = Btn(self.game, (300, 255, 100, 40), text="Текущая сессия",
                                   function=self.__goto_waiting_room)
         quest_button = Btn(self.game, (400, 255, 100, 40), text="Квесты", function=self.__set_quests_scene)
-        quit_account_button = Btn(self.game, (400, 305, 100, 40), text="из аккаунта",
+        quit_account_button = Btn(self.game, (325, 305, 150, 40), text="Выход из аккаунта",
                                   function=self.__quit_account)
-        exit_button = Btn(self.game, (300, 305, 100, 40), text="Назад", function=self.game.return_to_upper_scene)
+        #exit_button = Btn(self.game, (300, 305, 100, 40), text="Назад", function=self.game.return_to_upper_scene)
         title = Text(self.game, font_size=72, text="NetWars", x=self.game.width >> 1, y=200)
         self.objects.extend([
             waiting_room_button,
             quest_button,
             quit_account_button,
-            exit_button,
+            #exit_button,
             title,
         ])
 

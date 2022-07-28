@@ -52,7 +52,7 @@ class GSParcelHandlers:
         game_model.next_player_turn()
         DBGameSessionTools.save_game_model(gs, game_model)
         if game_model.game_over:
-            DBGameSessionTools.end_session_active_phase(gs)
+            DBGameSessionTools.end_session_active_phase(gs, game_model)
 
     @staticmethod
     def handle_get_game_model_request(socket: WebsocketConsumer, parcel: list):

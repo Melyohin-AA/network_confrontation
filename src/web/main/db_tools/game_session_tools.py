@@ -116,7 +116,7 @@ class DBGameSessionTools:
         return create_new_game_model(session.title, session.turn_period, session.money_limit, players_data)
 
     @staticmethod
-    def end_session_active_phase(session: GameSession):
+    def end_session_active_phase(session: GameSession, game_model):
         """**Переход игровой сессии в фазу #2**\n
         Сессия должна находиться в фазе #1!
 
@@ -129,7 +129,9 @@ class DBGameSessionTools:
             raise exceptions.ArgumentTypeException()
         if session.phase != 1:
             raise exceptions.InvalidOperationException()
-        session.winning_team = DBGameSessionTools.__get_winning_team(session)
+        session.winning_team = DBGameSessionTools.__get_winning_team(game_model)
+        if session.winning_team == -1:
+            raise exceptions.ArgumentOutOfRangeException()
         participations = UserParticipation.objects.filter(game_session=session)
         for participation in participations:
             victory = participation.user_data.team == session.winning_team
@@ -140,12 +142,10 @@ class DBGameSessionTools:
         session.save()
 
     @staticmethod
-    def __get_winning_team(session: GameSession) -> int:
-        game_model, error = DBGameSessionTools.try_load_game_model(session)
-        if error is not None:
-            for i in range(3):
-                if not game_model.teams[i].defeated:
-                    return i
+    def __get_winning_team(game_model) -> int:
+        for i in range(3):
+            if not game_model.teams[i].defeated:
+                return i
         return -1
 
     @staticmethod
