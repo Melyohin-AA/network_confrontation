@@ -101,10 +101,11 @@ class TreeScene(Scene):
         content = [
             gg.name, None,
             str(gg.owners_income),
-            str(gg.power_cap), str(gg.power_growth),
+            str(gg.power_growth),
+            str(gg.power_cap),
         ]
-        self.tile_text_1.update_text("Название: "+content[0])
-        self.tile_text_2.update_text(" Доход: "+content[2])
+        self.tile_text_1.update_text("Название: " + content[0])
+        self.tile_text_2.update_text(" Доход: " + content[2])
         self.tile_text_3.update_text(" Прирост очков: " + content[3])
         self.tile_text_4.update_text(" Лимит очков: " + content[4])
 
