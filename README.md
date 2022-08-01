@@ -1,4 +1,5 @@
 <div align="center">
+  <p align="right">2020.02.15 - 2020.06.22</p>
   <h2 align="center">Network Confrontation</h2>
   <p align="center">Многопользовательская стратегическая игра</p>
 </div>
