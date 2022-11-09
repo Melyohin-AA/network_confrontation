@@ -3,7 +3,7 @@ pygame==2.1.2
 image==1.5.31
 
 # Web application
-django==3.0.5
+django==3.1.14
 django-bootstrap4==1.1.1
 django_extensions==2.2.8
 
@@ -22,7 +22,7 @@ pylint-django==2.0.15
 # Other
 six==1.14.0
 
-# webserver                                                                                                                            │
+# webserver
 daphne==2.5.0
 
 # Database
