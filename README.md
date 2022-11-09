@@ -1,5 +1,4 @@
 <div align="center">
-  <p align="right">2020.02.15 - 2020.06.22</p>
   <h2 align="center">Network Confrontation</h2>
   <p align="center">Многопользовательская стратегическая игра</p>
 </div>
@@ -51,8 +50,8 @@
 * Целевые ОС - Linux, Windows 10
 
 ##### Технологический стек:
-* `Python 3.6`
-* `Django 3.0`
+* `Python 3.10`
+* `Django 3.1.4`
 * `SQLite 3.22`
 * `PyGame 2.1.2`
 * `Sphinx 5.1.1`
