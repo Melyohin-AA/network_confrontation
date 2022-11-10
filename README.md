@@ -1,105 +1,99 @@
 <div align="center">
   <h2 align="center">Network Confrontation</h2>
-  <p align="center">Многопользовательская стратегическая игра</p>
+  <p align="center">Multiplayer turn-based strategy game</p>
 </div>
 
 
-### О проекте
+### About the project
 
-Данный проект представляет собой клиент-серверное приложение, в котором реализован игровой процесс, а также вебсайт, предназначенный для взаимодействия игроков как в течение игровых сессий, так и вне их.
+The product consists of a client-server application where the gameplay is implemented, and a website designed for interaction between players both during game sessions and in other time.
 
-Разработка проекта велась командой разработчиков в рамках курса промышленного программирования.
+The project was developed by a small team of developers as part of the program development course.
 
-##### Особенности продукта:
-* Вебсайт:
-  * регистрация игроков;
-  * выбор принадлежности к одной из трёх фракций;
-  * профиль пользователя;
-  * ранжирование игроков по опыту;
-  * создание и настройка игровых сессий;
-  * поиск игровых сессий, к которым можно присоединиться;
-  * присоединение к игровым сессиям;
-  * внутриигровой магазин;
-  * описание фракций;
-  * топы игроков;
-* Многопользовательская стратегическая игра:
-  * три команды игроков;
-  * команды располагают внутрисессионным бюджетом;
-  * игроки ходят последовательно;
-  * ходы ограничены по времени;
-  * гексагональная сетка в качестве игровая карта;
-  * различные типы клеток сетки;
-  * развитие клеток за деньги;
-  * аккумулирование очков силы в клетках;
-  * перемещение очков силы между клетками;
-  * захват/оборона клеток с помощью очков силы;
-  * различные эффекты, воздействующие на клетки;
-  * различные "инструментов взлома", вызывающие воздействующие на клетки эффекты;
-  * покупка "инструментов взлома" во внутриигровом магазине;
-  * поражение команды, теряющей все контрольные клетки;
-  * победа последней оставшейся команды;
-  * получение опыта игроками победившей команды;
-* Однопользовательская игра-квест:
-  * сюжет;
-  * выбор между несколькими вариантами ответов/действий, влияющими на ход сюжета;
-  * выбор характеристик персонажа;
-  * наличие у вариантов ответов/действий определённых требований к характеристикам персонажа;
-  * возможность провального или успешного завершения игры;
-  * получение опыта игроком в случае успешного завершения игры;
-  * машинный перевод текста на различные языки;
-* Целевые ОС - Linux, Windows 10
+##### Features:
+Product features:
+* The website:
+  * player accounts;
+  * player belongs to one of three different factions;
+  * player's profile;
+  * ranking players by their experience;
+  * an option to create new game session and set it up;
+  * search of game sessions which are available for joining in;
+  * an option to join in a game session;
+  * in-game store;
+  * faction pages with faction's description and players' rating list;
+* The gameplay:
+  * 3 teams;
+  * teams have their budget that is local for a game session;
+  * players do their moves by turns;
+  * time to do moves in each turn is limited;
+  * hexagonal grid as the game field;
+  * different types of grid tiles;
+  * an option to upgrade grid tiles and develop them in different ways;
+  * accumulation of power points at a grid tile;
+  * an option to move power points between grid tiles;
+  * capturing/defending of grid tiles with power points;
+  * different effects that may be applied to grid tiles;
+  * different "hack tools" which cause grid tile effects;
+  * "hack tools" may be purchased at in-game store;
+  * loss of all capital tiles causes the team's defeat;
+  * the last remaining team wins;
+  * players of the winning team gain experience;
+* Target OS – Linux, Windows 10
 
-##### Технологический стек:
+##### Technology stack:
 * `Python 3.10`
 * `Django 3.1.4`
 * `SQLite 3.22`
 * `PyGame 2.1.2`
 * `Sphinx 5.1.1`
 
+### Usage
 
-### Настройка проекта
-
-1. Склонировать проект
+##### Project setting up
+1. Clone the repository
     ```sh
     git clone https://github.com/Melyohin-AA/network_confrontation.git
     ```
-2. Перейти в директорию `project`
-3. Инициализировать проект, запустив скрипт init.bat (для Windows) или init.sh (для Linux)
+2. Change directory to `project`
+3. Initialize the project by running `init.bat` script (for Windows) or `init.sh` script (for Linux)
 
-
-### Использование
-
-##### Запуск сервера:
-1. Активировать виртуальное окружение
-2. Перейти в директорию `src/web`
-3. Запустить сервер
+##### Starting server
+1. Activate the virtual environment
+2. Change directory to `src/web`
+3. Run server
     ```sh
-    python manage.py runserver --insecure
+    manage.py runserver --insecure
     ```
 
-##### Запуск клиента:
-1. Активировать виртуальное окружение
-2. Перейти в директорию `src/desktop`
-3. Запустить клиента
+##### Starting client
+1. Activate the virtual environment
+2. Change directory to `src/desktop`
+3. Run client
     ```sh
     python run.py
     ```
 
-##### Компиляция документации разработчика:
-1. Активировать виртуальное окружение
-2. Перейти в директорию `docs`
-3. Скомпилировать документацию, запустив скрипт `make`:
-   * для Linux
+##### Compilation of developer documentation
+1. Activate the virtual environment
+2. Change directory to `docs`
+3. Compile documentation by running `make` script:
+   * for Linux
    ```sh
    make html
    ```
-   * для Windows
+   * for Windows
    ```sh
    make.bat html
    ```
 
-### Документация
+### Documentation
 
-Документация пользователя: `docs/ДокументацияПользователя.pptx`.
+User documentation: `docs/ДокументацияПользователя.pptx`.
 
-Документация разработчика: `docs/build/html/index.html`.
+Developer documentation: `docs/build/html/index.html`.
+
+### Demo
+
+Youtube video:<br>
+[![Demo](https://img.youtube.com/vi/K3yNlMb3IwM/0.jpg)](https://youtu.be/K3yNlMb3IwM)
