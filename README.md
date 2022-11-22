@@ -10,16 +10,16 @@ The product consists of a client-server application where the gameplay is implem
 
 The project was developed by a small team of developers as part of the program development course.
 
-##### Features:
+#### Features:
 Product features:
 * The website:
   * player accounts;
   * player belongs to one of three different factions;
   * player's profile;
   * ranking players by their experience;
-  * an option to create new game session and set it up;
+  * option to create new game session and set it up;
   * search of game sessions which are available for joining in;
-  * an option to join in a game session;
+  * option to join in a game session;
   * in-game store;
   * faction pages with faction's description and players' rating list;
 * The gameplay:
@@ -29,9 +29,9 @@ Product features:
   * time to do moves in each turn is limited;
   * hexagonal grid as the game field;
   * different types of grid tiles;
-  * an option to upgrade grid tiles and develop them in different ways;
+  * option to upgrade grid tiles and develop them in different ways;
   * accumulation of power points at a grid tile;
-  * an option to move power points between grid tiles;
+  * option to move power points between grid tiles;
   * capturing/defending of grid tiles with power points;
   * different effects that may be applied to grid tiles;
   * different "hack tools" which cause grid tile effects;
@@ -41,16 +41,17 @@ Product features:
   * players of the winning team gain experience;
 * Target OS – Linux, Windows 10
 
-##### Technology stack:
+#### Technology stack:
 * `Python 3.10`
 * `Django 3.1.4`
 * `SQLite 3.22`
 * `PyGame 2.1.2`
 * `Sphinx 5.1.1`
 
+
 ### Usage
 
-##### Project setting up
+#### Project setting up:
 1. Clone the repository
     ```sh
     git clone https://github.com/Melyohin-AA/network_confrontation.git
@@ -58,7 +59,7 @@ Product features:
 2. Change directory to `project`
 3. Initialize the project by running `init.bat` script (for Windows) or `init.sh` script (for Linux)
 
-##### Starting server
+#### Starting server:
 1. Activate the virtual environment
 2. Change directory to `src/web`
 3. Run server
@@ -66,7 +67,7 @@ Product features:
     manage.py runserver --insecure
     ```
 
-##### Starting client
+#### Starting client:
 1. Activate the virtual environment
 2. Change directory to `src/desktop`
 3. Run client
@@ -74,7 +75,7 @@ Product features:
     python run.py
     ```
 
-##### Compilation of developer documentation
+#### Compilation of developer documentation:
 1. Activate the virtual environment
 2. Change directory to `docs`
 3. Compile documentation by running `make` script:
@@ -87,11 +88,13 @@ Product features:
    make.bat html
    ```
 
+
 ### Documentation
 
 User documentation: `docs/ДокументацияПользователя.pptx`.
 
 Developer documentation: `docs/build/html/index.html`.
+
 
 ### Demo
 
