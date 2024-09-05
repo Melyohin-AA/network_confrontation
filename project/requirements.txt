@@ -1,29 +1,29 @@
 # Desktop application
-pygame==2.1.2
-image==1.5.31
+pygame~=2.1.2
+image~=1.5.31
 
 # Web application
-django==3.1.14
-django-bootstrap4==1.1.1
-django_extensions==2.2.8
+django~=3.2.24
+django-bootstrap4~=1.1.1
+django_extensions~=2.2.8
 
 # Websockets
-websockets==8.1
-channels==2.4.0
+websockets~=8.1
+channels~=2.4.0
 
 # Documentation
-sphinx==5.1.1
-sphinx-rtd-theme==0.4.3
+sphinx~=5.1.1
+sphinx-rtd-theme~=0.4.3
 
 # Code style
-pylint==2.5.0
-pylint-django==2.0.15
+pylint~=2.5.0
+pylint-django~=2.0.15
 
 # Other
-six==1.14.0
+six~=1.14.0
 
 # webserver
-daphne==2.5.0
+daphne~=2.5.0
 
 # Database
-mysqlclient==2.1.1
+mysqlclient~=2.1.1
